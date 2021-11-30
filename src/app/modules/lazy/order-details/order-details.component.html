@@ -1,0 +1,20 @@
+<h1>{{ heading }}{{headingId}}</h1>
+<button (click)="navigate(-1)" mat-raised-button color="primary"><</button>
+<button (click)="navigate(1)" mat-raised-button color="primary">></button>
+<table mat-table [dataSource]="orderDetails" matSort (matSortChange)="sortChanged($event)">
+  <ng-container matColumnDef="Quantity">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+    <td mat-cell *matCellDef="let orderDetail"> {{ orderDetail.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="UnitPrice">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>UnitPrice</th>
+    <td mat-cell *matCellDef="let orderDetail"> {{ orderDetail.unitPrice }}</td>
+  </ng-container>
+  <ng-container matColumnDef="Product">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+    <td mat-cell *matCellDef="let orderDetail"> {{ orderDetail.productName }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="headers"></tr>
+  <tr mat-row *matRowDef="let row; columns: headers"></tr>
+</table>

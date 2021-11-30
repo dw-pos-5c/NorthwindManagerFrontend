@@ -15,14 +15,23 @@ export class OrdersComponent implements OnInit {
   customerId: string | undefined;
   employeeId: number | undefined;
 
+  headers = ['Ordered', 'Required', 'Shipped', 'Nr Details', 'button'];
+
+  heading: string | undefined;
+  headingId: number | string | undefined;
+
   constructor(private backend: BackendConnectorService, private route: ActivatedRoute) {
     route.paramMap.subscribe(x => {
       const id = x.get('empOrCustId');
       if (!id) return;
       if(+id) {
         this.employeeId = +id;
+        this.heading = 'Orders for employee ';
+        this.headingId = +id;
       } else {
         this.customerId = id;
+        this.heading = 'Orders for customer ';
+        this.headingId = id;
       }
     });
   }
@@ -40,6 +49,7 @@ export class OrdersComponent implements OnInit {
     else if (this.employeeId) {
       this.backend.getOrders(this.employeeId).then(result => {
         this.orders = result;
+        console.log(result);
       });
     }
     else {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CustomersComponent} from "./modules/shared/customers/customers.component";
 import {EmployeesComponent} from "./modules/shared/employees/employees.component";
+import {PageNotFoundComponent} from "./modules/shared/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {
@@ -18,13 +19,13 @@ const routes: Routes = [
     component: CustomersComponent,
   },
   {
-    path: 'orders/:empOrCustId',
+    path: 'orders',
     loadChildren: () => import('src/app/modules/lazy/lazy.module').then(x => x.LazyModule),
   },
   {
-    path: 'orders/details/:id',
-    component: CustomersComponent,
-  },
+    path: '**',
+    component: PageNotFoundComponent,
+  }
 ];
 
 @NgModule({

@@ -1,15 +1,15 @@
 class Order {
   id: number;
-  orderDate: Date;
-  requiredDate: Date;
-  shippedDate: Date;
+  orderDateMillis: number;
+  requiredDateMillis: number;
+  shippedDateMillis: number;
   nrOrderDetails: number;
 
-  constructor(id: number, orderDate: Date, requiredDate: Date, shippedDate: Date, nrOrderDetails: number) {
+  constructor(id: number, orderDateMillis: number, requiredDateMillis: number, shippedDateMillis: number, nrOrderDetails: number) {
     this.id = id;
-    this.orderDate = orderDate;
-    this.requiredDate = requiredDate;
-    this.shippedDate = shippedDate;
+    this.orderDateMillis = orderDateMillis;
+    this.requiredDateMillis = requiredDateMillis;
+    this.shippedDateMillis = shippedDateMillis;
     this.nrOrderDetails = nrOrderDetails;
   }
 }

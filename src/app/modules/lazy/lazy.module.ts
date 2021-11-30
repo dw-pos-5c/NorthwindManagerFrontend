@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { LazyRoutingModule } from './lazy-routing.module';
 import { OrdersComponent } from './orders/orders.component';
+import {MaterialModule} from "../material/material.module";
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 @NgModule({
   declarations: [
-    OrdersComponent
+    OrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     CommonModule,
-    LazyRoutingModule
+    MaterialModule,
+    LazyRoutingModule,
   ]
 })
 export class LazyModule { }

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import Customer from "../../models/Customer";
 import Employee from "../../models/Employee";
 import Order from "../../models/Order";
+import OrderDetail from "../../models/OrderDetail";
 
 @Injectable()
 export class BackendConnectorService {
@@ -21,6 +22,15 @@ export class BackendConnectorService {
   }
 
   getOrders(id: number | string): Promise<Order[]> {
-    return this.http.get<Order[]>(`${this.ulr}/Order/${id}`).toPromise();
+    if (typeof id === typeof '') {
+      return this.http.get<Order[]>(`${this.ulr}/OrdersFromCustomer/${id}`).toPromise();
+    }
+    else {
+      return this.http.get<Order[]>(`${this.ulr}/OrdersFromEmployee/${id}`).toPromise();
+    }
+  }
+
+  getOrderDetails(id: number): Promise<OrderDetail[]> {
+    return this.http.get<OrderDetail[]>(`${this.ulr}/OrderDetails/${id}`).toPromise();
   }
 }
